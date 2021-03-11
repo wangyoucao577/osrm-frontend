@@ -21,12 +21,12 @@ var streets = L.tileLayer('https://api.mapbox.com/v4/mapbox.streets/{z}/{x}/{y}@
 
 module.exports = {
   defaultState: {
-    center: L.latLng(38.8995,-77.0269),
+    center: L.latLng(37.349464,-121.952361),
     zoom: 13,
     waypoints: [],
     language: 'en',
     alternative: 0,
-    layer: streets
+    layer: 'openstreetmap.org'
   },
   services: [{
     label: 'Car (fastest)',
