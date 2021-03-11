@@ -161,7 +161,7 @@ router._convertRoute = function(responseRoute) {
       leg.steps.forEach(function(step) {
         // abusing the text property to save the original osrm step
         // for later use in the itnerary builder
-        resp.instructions[i].text = step;
+        //resp.instructions[i].text = step; // has been filled in routing-machine for EV
         i++;
       });
     });
