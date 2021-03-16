@@ -9,7 +9,7 @@ on:
 
 env:
   IMAGE_NAME: osrm-frontend
-  DOCKERFILE_PATH: docker/
+  DOCKERFILE_PATH: docker/Dockerfile
 
 jobs:
 
@@ -36,7 +36,7 @@ jobs:
         password: ${{ secrets.GHCR_IO_OSRM_FRONTEND_TOKEN }}
         registry: ghcr.io
         snapshot: false
-        workdir: ${{ env.DOCKERFILE_PATH }}
+        dockerfile: ${{ env.DOCKERFILE_PATH }}
         tags: "${{ env.IMAGE_TAG }}"
 
     - name: Build & Publish to DockerHub
@@ -46,5 +46,5 @@ jobs:
         username: ${{ github.actor }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
         snapshot: false
-        workdir: ${{ env.DOCKERFILE_PATH }}
+        dockerfile: ${{ env.DOCKERFILE_PATH }}
         tags: "${{ env.IMAGE_TAG }}"
