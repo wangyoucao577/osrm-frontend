@@ -194,7 +194,10 @@ function addWaypoint(waypoint) {
     lrmControl.spliceWaypoints(0, 1, waypoint);
   } else {
     if (length === 1) length = length + 1;
-    lrmControl.spliceWaypoints(length - 1, 1, waypoint);
+
+    // set the new added waypoint as destination and remove all intermediate waypoints
+    //lrmControl.spliceWaypoints(length - 1, 1, waypoint);
+    lrmControl.spliceWaypoints(1, length-1, waypoint);
   }
 }
 
