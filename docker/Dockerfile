@@ -5,6 +5,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update && DEBIAN_FRONTEND=noninteract
     wget \
     git \
     sed \
+    ca-certificates \
     && rm -rf /var/lib/apt/lists/*
 
 # install nvm and nodejs
@@ -13,9 +14,7 @@ RUN wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | 
   export NVM_DIR="$HOME/.nvm" && \
   # This loads nvm
   [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  && \
-  # https://github.com/Project-OSRM/osrm-backend/pull/5918
   nvm install node && \
-  # nvm install node && \
   node --version && \
   npm --version
 # Appending below nvm source string to your ~/.bashrc to let nvm/node/npm available 
