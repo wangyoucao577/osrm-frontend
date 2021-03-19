@@ -8,21 +8,6 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update && DEBIAN_FRONTEND=noninteract
     ca-certificates \
     && rm -rf /var/lib/apt/lists/*
 
-# install nvm and nodejs
-# https://github.com/nvm-sh/nvm#install--update-script
-RUN wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash && \
-  export NVM_DIR="$HOME/.nvm" && \
-  # This loads nvm
-  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  && \
-  nvm install node && \
-  node --version && \
-  npm --version
-# Appending below nvm source string to your ~/.bashrc to let nvm/node/npm available 
-#  export NVM_DIR="$HOME/.nvm"
-#  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-#  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-
 # Enables customized options using environment variables
 ENV OSRM_BACKEND='http://localhost:5000'
 ENV OSRM_CENTER='37.348645,-121.951331'
@@ -34,9 +19,23 @@ ENV OSRM_LABEL='Car (fastest)'
 RUN mkdir -p /src
 COPY package.json /src
 
-# Install app dependencies
-RUN cd /src && \
-    npm install
+
+# install nvm and nodejs
+# https://github.com/nvm-sh/nvm#install--update-script
+RUN wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash && \
+  export NVM_DIR="$HOME/.nvm" && \
+  # This loads nvm
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  && \
+  nvm install node && \
+  # Appending below nvm source string to your ~/.bashrc to let nvm/node/npm available 
+  #  export NVM_DIR="$HOME/.nvm" 
+  #  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+  #  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+  node --version && \
+  npm --version && \
+  # Install app dependencies
+  cd /src && \
+  npm install
 
 # Create app directory
 COPY . /src
