@@ -43,4 +43,4 @@ WORKDIR /src
 
 # Run App
 EXPOSE 9966
-CMD ["npm", "start"]
+CMD ["bash", "-c", "npm start"]
