@@ -19,14 +19,17 @@ ENV OSRM_LABEL='Car (fastest)'
 RUN mkdir -p /src
 COPY package.json /src
 
+ENV NVM_DIR "$HOME/.nvm"
+ENV NODE_VERSION 15.12.0
 
 # install nvm and nodejs
 # https://github.com/nvm-sh/nvm#install--update-script
 RUN wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash && \
-  export NVM_DIR="$HOME/.nvm" && \
   # This loads nvm
   [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  && \
-  nvm install node && \
+  nvm install $NODE_VERSION && \
+  nvm alias default $NODE_VERSION && \
+  nvm use default && \
   # Appending below nvm source string to your ~/.bashrc to let nvm/node/npm available 
   #  export NVM_DIR="$HOME/.nvm" 
   #  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -40,6 +43,8 @@ RUN wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | 
 # Create app directory
 COPY . /src
 WORKDIR /src
+
+ENV PATH $NVM_DIR/versions/node/v$NODE_VERSION/bin:$PATH
 
 # Run App
 EXPOSE 9966
