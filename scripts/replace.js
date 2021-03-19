@@ -21,7 +21,7 @@ for (const filepath of [leafletOptions, debug]) {
   const LANGUAGE = process.env.OSRM_LANGUAGE || 'en'
 
   // Edit Leaflet Options
-  if (BACKEND) options = options.replace(/http[s]?:\/\/router\.project-osrm\.org/, BACKEND)
+  if (BACKEND) options = options.replace(/http[s]?:\/\/router\.project-osrm\.org\/route/, BACKEND)
   if (LABEL) options = options.replace('Car (fastest)', LABEL)
   if (ZOOM) options = options.replace('zoom: 13', `zoom: ${ZOOM}`)
   if (LANGUAGE) options = options.replace(`language: 'en'`, `language: '${LANGUAGE}'`)
