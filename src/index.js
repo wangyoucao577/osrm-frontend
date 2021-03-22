@@ -101,6 +101,9 @@ var plan = new ReversablePlan([], {
       draggable: this.draggableWaypoints,
       icon: makeIcon(i, n)
     };
+    if (i > 0 && i < n-1){  // only origin & destination allow draggable
+      options.draggable = false;
+    } 
     var marker = L.marker(wp.latLng, options);
     marker.on('click', function() {
       plan.spliceWaypoints(i, 1);
