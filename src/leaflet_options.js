@@ -30,9 +30,7 @@ module.exports = {
   },
   services: [{
     label: 'Car (fastest)',
-    //path: 'https://router.project-osrm.org/v1'
-    path: 'http://172.16.130.12:32288/ev/route/osrm/v1'
-    //path: 'http://ec2d-routing-osrm-na-01.dev.mypna.com:5550/ev/route/osrm/v1'
+    path: 'https://router.project-osrm.org/route/v1'
   }],
   layer: [{
     'Mapbox Streets': streets,
@@ -52,4 +50,3 @@ module.exports = {
     five: osm_de
   }
 };
-
