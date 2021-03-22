@@ -40,7 +40,7 @@ module.exports = {
     'openstreetmap.de.org': osm_de
   }],
   overlay: {
-    'Small Components': small_components
+    //'Small Components': small_components
   },
   baselayer: {
     one: streets,
