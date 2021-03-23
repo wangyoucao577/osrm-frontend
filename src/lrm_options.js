@@ -22,7 +22,7 @@ module.exports = {
       {color: 'black', opacity: 0.35, weight: 9},
       {color: 'white', opacity: 0.8, weight: 7}
     ],
-    routeWhileDragging: true,
+    routeWhileDragging: false,
     summaryTemplate: '<div class="osrm-directions-summary"><h2>{name}</h2><h3>{distance}, {time}</h3></div>',
     containerClassName: 'dark pad2',
     alternativeClassName: 'osrm-directions-instructions',
@@ -31,7 +31,7 @@ module.exports = {
     createGeocoder: createGeocoder,
     showAlternatives: true,
     useZoomParameter: false,
-    routeDragInterval: 200,
+    routeDragInterval: 500,
     collapsible: true
   },
   popup: {
