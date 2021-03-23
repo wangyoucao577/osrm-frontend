@@ -211,6 +211,15 @@
   color: white;
 }
 
+.leaflet-routing-good-trip:after {
+  content: '\1F44D';
+}
+
+.leaflet-routing-bad-trip:after {
+  content: '\1F44E';
+}
+
+
 .leaflet-routing-add-waypoint {
   display: block;
 }
