@@ -219,6 +219,11 @@
   content: '\1F44E';
 }
 
+.leaflet-routing-show-metadata:after {
+  content: 'M';
+}
+
+
 
 .leaflet-routing-add-waypoint {
   display: block;
