@@ -17,10 +17,11 @@ var Control = L.Control.extend({
     localizationChooserClass: ""
   },
 
-  initialize: function(localization, languages, options) {
+  initialize: function(localization, languages, options, service_url) {
     L.setOptions(this, options);
     this._local = localization;
     this._languages = languages;
+    this._service_url = service_url;
   },
 
   onAdd: function(map) {
@@ -35,7 +36,9 @@ var Control = L.Control.extend({
       localizationButton,
       popupCloseButton,
       gpxContainer,
-      gpxButton;
+      gpxButton,
+      docsContainer,
+      docsButton;
     this._container = L.DomUtil.create('div', 'leaflet-osrm-tools-container ' + this.options.toolsContainerClass);
     L.DomEvent.disableClickPropagation(this._container);
     // editorContainer = L.DomUtil.create('div', 'leaflet-osrm-tools-editor', this._container);
@@ -54,6 +57,10 @@ var Control = L.Control.extend({
     // mapillaryButton = L.DomUtil.create('span', this.options.mapillaryButtonClass, mapillaryContainer);
     // mapillaryButton.title = this._local['Open in Mapillary'];
     // L.DomEvent.on(mapillaryButton, 'click', this._openMapillary, this);
+    docsContainer = L.DomUtil.create('div', 'leaflet-osrm-tools-debug', this._container);
+    docsButton = L.DomUtil.create('span', this.options.debugButtonClass, docsContainer);
+    docsButton.title = 'Open EV Trip Planner Docs';
+    L.DomEvent.on(docsButton, 'click', this._openDocs, this);
     gpxContainer = L.DomUtil.create('div', 'leaflet-osrm-tools-gpx', this._container);
     gpxButton = L.DomUtil.create('span', this.options.gpxButtonClass, gpxContainer);
     this._gpxButton = gpxButton;
@@ -89,6 +96,13 @@ var Control = L.Control.extend({
       zoom = this._map.getZoom(),
       prec = 6;
     window.open("debug/#" + zoom + "/" + position.lat.toFixed(prec) + "/" + position.lng.toFixed(prec));
+  },
+
+  _openDocs: function() {
+    var urls = this._service_url.split('//');
+
+    var docs_url = urls[0]+'//'+(urls[1].split('/'))[0]+"/docs";
+    window.open(docs_url);
   },
 
   _openMapillary: function() {
@@ -191,7 +205,7 @@ var Control = L.Control.extend({
 });
 
 module.exports = {
-  control: function(localization, languages, options) {
-    return new Control(localization, languages, options);
+  control: function(localization, languages, options, service_url) {
+    return new Control(localization, languages, options, service_url);
   }
 };

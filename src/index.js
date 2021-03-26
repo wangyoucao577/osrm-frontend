@@ -175,7 +175,7 @@ router._convertRoute = function(responseRoute) {
 var lrmControl = L.Routing.control(Object.assign(controlOptions, {
   router: router
 })).addTo(map);
-var toolsControl = tools.control(localization.get(mergedOptions.language), localization.getLanguages(), options.tools).addTo(map);
+var toolsControl = tools.control(localization.get(mergedOptions.language), localization.getLanguages(), options.tools, leafletOptions.services[0].path).addTo(map);
 var state = state(map, lrmControl, toolsControl, mergedOptions);
 
 plan.on('waypointgeocoded', function(e) {
