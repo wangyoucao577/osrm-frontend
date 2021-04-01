@@ -69,7 +69,7 @@ var ReversablePlan = L.Routing.Plan.extend({
 
 /* Setup markers */
 function makeIcon(i, n) {
-  var url = 'images/marker-via-icon-2x.png';
+  var url = 'images/marker-charger-icon-2x.png';
   var markerList = ['images/marker-start-icon-2x.png', 'images/marker-end-icon-2x.png'];
   if (i === 0) {
     return L.icon({
