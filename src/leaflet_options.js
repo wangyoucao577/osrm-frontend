@@ -21,8 +21,8 @@ var streets = L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/streets-v11/t
 
 module.exports = {
   defaultState: {
-    center: L.latLng(37.349464,-121.952361),
-    zoom: 13,
+    center: L.latLng(36.368222,-118.668823),
+    zoom: 7,
     waypoints: [],
     language: 'en',
     alternative: 0,
